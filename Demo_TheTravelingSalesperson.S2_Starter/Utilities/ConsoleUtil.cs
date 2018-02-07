@@ -279,5 +279,15 @@ namespace Demo_TheTravelingSalesperson
 
             return newStr;
         }
+        public static void DisplayConfirmPropt()
+        {
+
+            Console.Write("Press ");
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.Write("Enter");
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write(" To Confirm");
+
+        }
     }
 }

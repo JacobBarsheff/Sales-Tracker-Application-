@@ -4,6 +4,7 @@
     {
         None,
         SetUpAccount,
+        AccountEdit,
         Travel,
         Buy,
         Sell,

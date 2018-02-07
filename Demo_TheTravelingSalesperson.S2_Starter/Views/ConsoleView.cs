@@ -311,6 +311,11 @@ namespace Demo_TheTravelingSalesperson
                         userMenuChoice = MenuOption.ChangeItem;
                         usingMenu = false;
                         break;
+                    case 'K':
+                    case 'k':
+                        userMenuChoice = MenuOption.AccountEdit;
+                        usingMenu = false;
+                    break;
                     case 'Z':
                     case 'z':
                         userMenuChoice = MenuOption.Exit;
@@ -617,6 +622,108 @@ namespace Demo_TheTravelingSalesperson
 
             return salesperson;
         }
+
+        public int DisplayEditAccount(Salesperson salesperson)
+        {
+            ConsoleUtil.HeaderText = "Edit Account";
+            int menuChoiceNum = 1;
+            bool exiting = false;
+
+            do
+            {
+                Console.CursorVisible = false;
+
+                Console.Clear();
+
+                switch (menuChoiceNum.ToString())
+                {
+                    case "1":
+                        Console.BackgroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("> 1. First Name (" + salesperson.FirstName + ")");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.WriteLine("2. Last Name");
+                        Console.WriteLine("3. AccountID");
+                        Console.WriteLine();
+                        Console.WriteLine("Change First Name?");
+                        break;
+                    case "2":
+                        Console.WriteLine("1. First Name");
+                        Console.BackgroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("> 2. Last Name");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.WriteLine("3. AccountID");
+                        Console.WriteLine();
+                        Console.WriteLine("Change Last Name?");
+                        break;
+                    case "3":
+                        Console.WriteLine("1. First Name");
+                        Console.WriteLine("2. Last Name");
+                        Console.BackgroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("> 3. AccountID");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.WriteLine();
+                        Console.WriteLine("Change AccountID?");
+                        break;
+                    default:
+                        break;
+                }
+                ConsoleUtil.DisplayConfirmPropt();
+                ConsoleKeyInfo keyinfo = Console.ReadKey();
+                if (keyinfo.Key == ConsoleKey.DownArrow)
+                {
+                    if (menuChoiceNum < 3)
+                    {
+                        menuChoiceNum = menuChoiceNum + 1;
+                    }
+                    else
+                    {
+                        menuChoiceNum = 1;
+                    }
+
+                }
+                else if (keyinfo.Key == ConsoleKey.Enter)
+                {
+                    exiting = true;
+                }
+                else if (keyinfo.Key == ConsoleKey.UpArrow)
+                {
+                    if (menuChoiceNum == 1)
+                    {
+                        menuChoiceNum = 3;
+                    }
+                    else
+                    {
+                        menuChoiceNum = menuChoiceNum - 1;
+                    }
+
+                }
+                else if (keyinfo.Key == ConsoleKey.D1)
+                {
+                    menuChoiceNum = 1;
+                }
+                else if (keyinfo.Key == ConsoleKey.D2)
+                {
+                    menuChoiceNum = 2;
+                }
+                else if (keyinfo.Key == ConsoleKey.D3)
+                {
+                    menuChoiceNum = 3;
+                }
+
+            } while (!exiting);
+
+            switch (menuChoiceNum)
+            {
+                case 1:
+
+                    break;
+                default:
+                    break;
+            }
+            return menuChoiceNum;
+        }
+
+        
         #endregion
     }
 

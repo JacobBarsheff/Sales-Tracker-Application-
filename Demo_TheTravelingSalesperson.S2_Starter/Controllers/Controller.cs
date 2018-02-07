@@ -134,6 +134,9 @@ namespace Demo_TheTravelingSalesperson
                     case MenuOption.DisplayPurchaseLog:
                         DisplayPurchaseLog();
                         break;
+                    case MenuOption.AccountEdit:
+                        EditAccount();
+                        break;
                     case MenuOption.Exit:
                         _usingApplication = false;
                         break;
@@ -236,6 +239,10 @@ namespace Demo_TheTravelingSalesperson
         {
            _consoleView.ChangeItem(_salesperson, _salesLog);
 
+        }
+        private void EditAccount()
+        {
+            int menuChoice = _consoleView.DisplayEditAccount(_salesperson);
         }
         #endregion
     }
