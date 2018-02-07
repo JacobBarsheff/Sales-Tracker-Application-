@@ -135,6 +135,10 @@ namespace Demo_TheTravelingSalesperson
             salesperson.AccountID = Console.ReadLine();
             ConsoleUtil.DisplayMessage("");
 
+            ConsoleUtil.DisplayPromptMessage("Please Enter your Current City ");
+            salesperson.CurrentCity = Console.ReadLine();
+            ConsoleUtil.DisplayMessage("");
+
             ConsoleUtil.DisplayMessage("Available Product Type For Sale:");
             ConsoleUtil.DisplayMessage("");
 
@@ -252,8 +256,12 @@ namespace Demo_TheTravelingSalesperson
                     "\t" + "H. Display Sales Log" + Environment.NewLine +
                     "\t" + "I. Display Purchase Log" + Environment.NewLine +
                     "\t" + "J. Change Product" + Environment.NewLine +
+                    "\t" + "K. Edit Account" + Environment.NewLine);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\t" + "--------------------" + Environment.NewLine +
                     "\t" + "Z. Exit" + Environment.NewLine);
-
+                
+                ConsoleUtil.displayFooter();
                 //
                 // get and process the user's response
                 // note: ReadKey argument set to "true" disables the echoing of the key press
@@ -524,10 +532,11 @@ namespace Demo_TheTravelingSalesperson
             int counter = 1;
             for (int index = 0; index < _salesLogList.Count; index++)
             {
-                
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(counter + _salesLogList[index]);
                 counter++;
             }
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
             Console.WriteLine("Total Sold....." + salesLog._totalSales.ToString());
 
@@ -543,10 +552,11 @@ namespace Demo_TheTravelingSalesperson
             int counter = 1;
             for (int index = 0; index < _purchaseLogList.Count; index++)
             {
-
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(counter + _purchaseLogList[index]);
                 counter++;
             }
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
             Console.WriteLine("Total Bought....." + salesLog._totalPurchase.ToString());
 
@@ -623,9 +633,10 @@ namespace Demo_TheTravelingSalesperson
             return salesperson;
         }
 
-        public int DisplayEditAccount(Salesperson salesperson)
+        public Salesperson DisplayEditAccount(Salesperson salesperson)
         {
             ConsoleUtil.HeaderText = "Edit Account";
+            ConsoleUtil.DisplayReset();
             int menuChoiceNum = 1;
             bool exiting = false;
 
@@ -633,13 +644,15 @@ namespace Demo_TheTravelingSalesperson
             {
                 Console.CursorVisible = false;
 
-                Console.Clear();
-
+                ConsoleUtil.DisplayReset();
+                
                 switch (menuChoiceNum.ToString())
                 {
                     case "1":
-                        Console.BackgroundColor = ConsoleColor.Blue;
+                        Console.BackgroundColor = ConsoleColor.DarkGray;
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.WriteLine("> 1. First Name (" + salesperson.FirstName + ")");
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.WriteLine("2. Last Name");
                         Console.WriteLine("3. AccountID");
@@ -648,8 +661,10 @@ namespace Demo_TheTravelingSalesperson
                         break;
                     case "2":
                         Console.WriteLine("1. First Name");
-                        Console.BackgroundColor = ConsoleColor.Blue;
-                        Console.WriteLine("> 2. Last Name");
+                        Console.BackgroundColor = ConsoleColor.DarkGray;
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("> 2. Last Name (" + salesperson.LastName + ")");
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.WriteLine("3. AccountID");
                         Console.WriteLine();
@@ -658,8 +673,10 @@ namespace Demo_TheTravelingSalesperson
                     case "3":
                         Console.WriteLine("1. First Name");
                         Console.WriteLine("2. Last Name");
-                        Console.BackgroundColor = ConsoleColor.Blue;
-                        Console.WriteLine("> 3. AccountID");
+                        Console.BackgroundColor = ConsoleColor.DarkGray;
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("> 3. AccountID (" + salesperson.AccountID + ")");
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.WriteLine();
                         Console.WriteLine("Change AccountID?");
@@ -711,16 +728,62 @@ namespace Demo_TheTravelingSalesperson
                 }
 
             } while (!exiting);
+            Console.CursorVisible = true;
 
             switch (menuChoiceNum)
             {
                 case 1:
-
+                    ConsoleUtil.DisplayReset();
+                    ConsoleUtil.DisplayPromptMessage("What would you like to change your first name to?");
+                    string firstName = Console.ReadLine();
+                    if (firstName == "")
+                    {
+                        Console.WriteLine("No input detected");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        salesperson.FirstName = firstName;
+                    }  
+                    
                     break;
+                case 2:
+                    ConsoleUtil.DisplayReset();
+                    ConsoleUtil.DisplayPromptMessage("What would you like to change your last name to?");
+                    string lastName = Console.ReadLine();
+                    if (lastName == "")
+                    {
+                        Console.WriteLine("No input detected");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        salesperson.LastName = lastName;
+                    }
+                    break;
+                case 3:
+                    ConsoleUtil.DisplayReset();
+                    ConsoleUtil.DisplayPromptMessage("What would you like to change your AccountID to?");
+                    string accountID = Console.ReadLine();
+                    if (accountID == "")
+                    {
+                        Console.WriteLine("No input detected");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        salesperson.AccountID = accountID;
+                    }
+                    break;
+
                 default:
                     break;
             }
-            return menuChoiceNum;
+            return salesperson;
+
         }
 
         

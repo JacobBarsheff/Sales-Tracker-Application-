@@ -242,7 +242,7 @@ namespace Demo_TheTravelingSalesperson
         }
         private void EditAccount()
         {
-            int menuChoice = _consoleView.DisplayEditAccount(_salesperson);
+            Salesperson salesperson = _consoleView.DisplayEditAccount(_salesperson);
         }
         #endregion
     }

@@ -15,7 +15,7 @@ namespace Demo_TheTravelingSalesperson
         #region FIELDS
 
         private static int _windowWidth = 79;
-        private static int _windowHeight = 20;
+        private static int _windowHeight = 25;
 
         private static int _windowLeft = 20;
         private static int _windowTop = 20;
@@ -128,9 +128,6 @@ namespace Demo_TheTravelingSalesperson
             Console.BackgroundColor = _bodyBackgroundColor;
 
             ConsoleUtil.DisplayMessage("");
-
-
-
 
         }
 
@@ -288,6 +285,17 @@ namespace Demo_TheTravelingSalesperson
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Write(" To Confirm");
 
+        }
+
+        public static void displayFooter()
+        {
+            Console.ForegroundColor = _headerForegroundColor;
+            Console.BackgroundColor = _headerBackgroundColor;
+            Console.WriteLine();
+            Console.WriteLine(ConsoleUtil.FillStringWithSpaces(_windowWidth));
+            Console.WriteLine(ConsoleUtil.FillStringWithSpaces(_windowWidth));
+            Console.ForegroundColor = _bodyForegroundColor;
+            Console.BackgroundColor = _bodyBackgroundColor;
         }
     }
 }

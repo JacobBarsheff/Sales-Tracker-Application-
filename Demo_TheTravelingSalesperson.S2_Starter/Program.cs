@@ -11,6 +11,7 @@ namespace Demo_TheTravelingSalesperson
         static void Main(string[] args)
         {
             Controller appController = new Controller();
+            
         }
     }
 }
