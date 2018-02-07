@@ -236,23 +236,23 @@ namespace Demo_TheTravelingSalesperson
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write(
-                    "\t" + "0. Account Setup" + Environment.NewLine);
+                    "\t" + "A. Account Setup" + Environment.NewLine);
                     Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("\t" + "--------------------" + Environment.NewLine +
-                    "\t" + "1. Travel" + Environment.NewLine +
-                    "\t" + "2. Buy" + Environment.NewLine +
-                    "\t" + "3. Sell" + Environment.NewLine);
+                    "\t" + "B. Travel" + Environment.NewLine +
+                    "\t" + "C. Buy" + Environment.NewLine +
+                    "\t" + "D. Sell" + Environment.NewLine);
                     Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\t" + "--------------------" + Environment.NewLine +
-                    "\t" + "4. Display Inventory" + Environment.NewLine +
-                    "\t" + "5. Display Cities" + Environment.NewLine +
-                    "\t" + "6. Display Account Info" + Environment.NewLine);
+                    "\t" + "E. Display Inventory" + Environment.NewLine +
+                    "\t" + "F. Display Cities" + Environment.NewLine +
+                    "\t" + "G. Display Account Info" + Environment.NewLine);
                     Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("\t" + "--------------------" + Environment.NewLine +
-                    "\t" + "7. Display Sales Log" + Environment.NewLine +
-                    "\t" + "8. Display Purchase Log" + Environment.NewLine +
-                    "\t" + "9. Change Product" + Environment.NewLine +
-                    "\t" + "E. Exit" + Environment.NewLine);
+                    "\t" + "H. Display Sales Log" + Environment.NewLine +
+                    "\t" + "I. Display Purchase Log" + Environment.NewLine +
+                    "\t" + "J. Change Product" + Environment.NewLine +
+                    "\t" + "Z. Exit" + Environment.NewLine);
 
                 //
                 // get and process the user's response
@@ -261,48 +261,58 @@ namespace Demo_TheTravelingSalesperson
                 ConsoleKeyInfo userResponse = Console.ReadKey(true);
                 switch (userResponse.KeyChar)
                 {
-                    case '0':
+                    case 'A':
+                    case 'a':
                         userMenuChoice = MenuOption.SetUpAccount;
                         usingMenu = false;
                         break;
-                    case '1':
+                    case 'B':
+                    case 'b':
                         userMenuChoice = MenuOption.Travel;
                         usingMenu = false;
                         break;
-                    case '2':
+                    case 'C':
+                    case 'c':
                         userMenuChoice = MenuOption.Buy;
                         usingMenu = false;
                         break;
-                    case '3':
+                    case 'D':
+                    case 'd':
                         userMenuChoice = MenuOption.Sell;
-                        usingMenu = false;
-                        break;
-                    case '4':
-                        userMenuChoice = MenuOption.DisplayInventory;
-                        usingMenu = false;
-                        break;
-                    case '5':
-                        userMenuChoice = MenuOption.DisplayCities;
-                        usingMenu = false;
-                        break;
-                    case '6':
-                        userMenuChoice = MenuOption.DisplayAccountInfo;
-                        usingMenu = false;
-                        break;
-                    case '7':
-                        userMenuChoice = MenuOption.DisplayStats;
-                        usingMenu = false;
-                        break;
-                    case '8':
-                        userMenuChoice = MenuOption.DisplayPurchaseLog;
-                        usingMenu = false;
-                        break;
-                    case '9':
-                        userMenuChoice = MenuOption.ChangeItem;
                         usingMenu = false;
                         break;
                     case 'E':
                     case 'e':
+                        userMenuChoice = MenuOption.DisplayInventory;
+                        usingMenu = false;
+                        break;
+                    case 'F':
+                    case 'f':
+                        userMenuChoice = MenuOption.DisplayCities;
+                        usingMenu = false;
+                        break;
+                    case 'G':
+                    case 'g':
+                        userMenuChoice = MenuOption.DisplayAccountInfo;
+                        usingMenu = false;
+                        break;
+                    case 'H':
+                    case 'h':
+                        userMenuChoice = MenuOption.DisplayStats;
+                        usingMenu = false;
+                        break;
+                    case 'I':
+                    case 'i':
+                        userMenuChoice = MenuOption.DisplayPurchaseLog;
+                        usingMenu = false;
+                        break;
+                    case 'J':
+                    case 'j':
+                        userMenuChoice = MenuOption.ChangeItem;
+                        usingMenu = false;
+                        break;
+                    case 'Z':
+                    case 'z':
                         userMenuChoice = MenuOption.Exit;
                         usingMenu = false;
                         break;
