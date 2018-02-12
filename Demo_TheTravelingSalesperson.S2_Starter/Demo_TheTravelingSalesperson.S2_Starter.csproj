@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Data\XmlServices.cs" />
     <Compile Include="Models\MenuOption.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\SalesLog.cs" />
@@ -56,5 +57,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="data.xml" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,6 +5,12 @@ namespace Demo_TheTravelingSalesperson
 
     public class Salesperson
     {
+        public enum Gender
+        {
+            NA,
+            Male,
+            Female
+        }
         #region FIELDS
 
         private string _firstName;
@@ -13,12 +19,28 @@ namespace Demo_TheTravelingSalesperson
         private List<string> _citiesVisited;
         private Product _currentStock;
         private string _currentCity = "N/A";
+        private int _age;
+        private bool _hasPriorSalesExperience;
+
+
+
 
 
 
         #endregion
 
         #region PROPERTIES
+        public bool HasPriorSalesExperience
+        {
+            get { return _hasPriorSalesExperience; }
+            set { _hasPriorSalesExperience = value; }
+        }
+
+        public int Age
+        {
+            get { return _age; }
+            set { _age = value; }
+        }
 
         public string CurrentCity
         {

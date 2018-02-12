@@ -14,6 +14,8 @@
         DisplayAccountInfo,
         DisplayStats,
         DisplayPurchaseLog,
+        Save,
+        Load,
         Exit
     }
 }

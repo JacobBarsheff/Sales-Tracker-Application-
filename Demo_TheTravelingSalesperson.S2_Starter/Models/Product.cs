@@ -27,10 +27,30 @@ namespace Demo_TheTravelingSalesperson
         private ProductType _type;
         private int _numberOfUnits;
         private bool _onBackorder;
+        private double _price;
+        private string _manufacturerLocation = "Seoul, South Korea";
+        private string _category = "electronics";
 
         #endregion
 
         #region PROPERTIES
+        public double Price
+        {
+            get { return _price; }
+            set { _price = value; }
+        }
+
+        public string Category
+        {
+            get { return _category = "electronics"; }
+            set { _category = value; }
+        }
+
+        public string ManufacturerLocation
+        {
+            get { return _manufacturerLocation = "Seoul, South Korea"; }
+            set { _manufacturerLocation = value; }
+        }
 
         public ProductType Type
         {

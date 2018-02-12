@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Demo_TheTravelingSalesperson
 {
@@ -15,6 +17,8 @@ namespace Demo_TheTravelingSalesperson
         private ConsoleView _consoleView;
         private Salesperson _salesperson;
         private SalesLog _salesLog;
+        private Product _product;
+        private XmlServices _xml;
         private List<string> _salesLogList;
         private List<string> _purchaseLogList;
 
@@ -52,7 +56,20 @@ namespace Demo_TheTravelingSalesperson
             //
             _salesLogList = new List<string>();
 
+            //
+            //
+            //
             _purchaseLogList = new List<string>();
+
+            //
+            //
+            //
+            _product = new Product();
+            //
+            //
+            //
+            _xml = new XmlServices();
+       
             //
             // begins running the application UI
             //
@@ -137,6 +154,12 @@ namespace Demo_TheTravelingSalesperson
                     case MenuOption.AccountEdit:
                         EditAccount();
                         break;
+                    case MenuOption.Save:
+                        WriteXMLFile(_salesperson, _xml);
+                        break;
+                    case MenuOption.Load:
+                        _salesperson = ReadXmlFile(_salesperson);
+                        break;
                     case MenuOption.Exit:
                         _usingApplication = false;
                         break;
@@ -156,7 +179,8 @@ namespace Demo_TheTravelingSalesperson
         {
             // setup initial salesperson account
             //
-            _salesperson = _consoleView.DisplaySetupAccount(_salesLog);
+            _salesperson = _consoleView.DisplaySetupAccount(_salesLog, _product);
+            
         }
         private void Travel()
         {
@@ -229,6 +253,7 @@ namespace Demo_TheTravelingSalesperson
             DateTime localDate = DateTime.Now;
             record = (")" + (_salesLog.BoughtProduct = _salesperson.CurrentStock.Type.ToString()) + "...." + _salesLog.UnitsBought.ToString() + "............" + localDate.ToString() + "........" + _salesperson.CurrentCity);
             _purchaseLogList.Add(record);
+
         }
 
         private void DisplayPurchaseLog()
@@ -243,6 +268,17 @@ namespace Demo_TheTravelingSalesperson
         private void EditAccount()
         {
             Salesperson salesperson = _consoleView.DisplayEditAccount(_salesperson);
+        }
+        private static void WriteXMLFile(Salesperson salesperson, XmlServices _xml)
+        {
+            salesperson = XmlServices.WriteXMLFile(salesperson);
+            
+        }
+
+        public static Salesperson ReadXmlFile(Salesperson salesperson)
+        {
+            salesperson = XmlServices.ReadXmlFile(salesperson);
+            return salesperson;
         }
         #endregion
     }

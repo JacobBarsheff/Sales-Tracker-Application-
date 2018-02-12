@@ -113,7 +113,7 @@ namespace Demo_TheTravelingSalesperson
         ///       return a Salesperson object with the initial data to the controller. For simplicity in 
         ///       this demo, the ConsoleView object is allowed to access the Salesperson object's properties.
         /// </summary>
-        public Salesperson DisplaySetupAccount(SalesLog salesLog)
+        public Salesperson DisplaySetupAccount(SalesLog salesLog, Product product)
         {
             Salesperson salesperson = new Salesperson();
 
@@ -131,12 +131,22 @@ namespace Demo_TheTravelingSalesperson
             salesperson.LastName = Console.ReadLine();
             ConsoleUtil.DisplayMessage("");
 
+            ConsoleUtil.DisplayPromptMessage("Enter your Age: ");
+            int.TryParse(Console.ReadLine(), out int age);
+            salesperson.Age = age;
+            ConsoleUtil.DisplayMessage("");
+
             ConsoleUtil.DisplayPromptMessage("Enter your account ID: ");
             salesperson.AccountID = Console.ReadLine();
             ConsoleUtil.DisplayMessage("");
 
             ConsoleUtil.DisplayPromptMessage("Please Enter your Current City ");
             salesperson.CurrentCity = Console.ReadLine();
+            ConsoleUtil.DisplayMessage("");
+
+            ConsoleUtil.DisplayPromptMessage("Do you have any prior sales experience");
+            bool.TryParse(Console.ReadLine(), out bool experience);
+            salesperson.HasPriorSalesExperience = experience;
             ConsoleUtil.DisplayMessage("");
 
             ConsoleUtil.DisplayMessage("Available Product Type For Sale:");
@@ -171,7 +181,6 @@ namespace Demo_TheTravelingSalesperson
             {
                 salesperson.CurrentStock.Type = Product.ProductType.None;
             }
-
             //
             // get number of products in inventory
             //
@@ -257,11 +266,14 @@ namespace Demo_TheTravelingSalesperson
                     "\t" + "I. Display Purchase Log" + Environment.NewLine +
                     "\t" + "J. Change Product" + Environment.NewLine +
                     "\t" + "K. Edit Account" + Environment.NewLine);
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("\t" + "--------------------" + Environment.NewLine +
+                    "\t" + "L. Save Account" + Environment.NewLine +
+                    "\t" + "M. Load Account" + Environment.NewLine);
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("\t" + "--------------------" + Environment.NewLine +
                     "\t" + "Z. Exit" + Environment.NewLine);
                 
-                ConsoleUtil.displayFooter();
                 //
                 // get and process the user's response
                 // note: ReadKey argument set to "true" disables the echoing of the key press
@@ -324,6 +336,16 @@ namespace Demo_TheTravelingSalesperson
                         userMenuChoice = MenuOption.AccountEdit;
                         usingMenu = false;
                     break;
+                    case 'L':
+                    case 'l':
+                        userMenuChoice = MenuOption.Save;
+                        usingMenu = false;
+                        break;
+                    case 'M':
+                    case 'm':
+                        userMenuChoice = MenuOption.Load;
+                        usingMenu = false;
+                        break;
                     case 'Z':
                     case 'z':
                         userMenuChoice = MenuOption.Exit;
@@ -382,7 +404,6 @@ namespace Demo_TheTravelingSalesperson
                 numberOfUnitsToBuy = 0;
                 DisplayContinuePrompt();
             }
-
             ConsoleUtil.DisplayReset();
 
             ConsoleUtil.DisplayMessage(numberOfUnitsToBuy + " " + product.Type.ToString() + " products have been added to the inventory.");
@@ -416,7 +437,6 @@ namespace Demo_TheTravelingSalesperson
                 numberOfUnitsToSell = 0;
                 DisplayContinuePrompt();
             }
-
             ConsoleUtil.DisplayReset();
 
             ConsoleUtil.DisplayMessage(numberOfUnitsToSell + " " + product.Type.ToString() + " products have been subtracted from the inventory.");
@@ -459,6 +479,23 @@ namespace Demo_TheTravelingSalesperson
 
             ConsoleUtil.DisplayMessage("Product type: " + product.Type.ToString());
             ConsoleUtil.DisplayMessage("Number of units: " + product.NumberOfUnits.ToString());
+            switch (product.Type)
+            {
+                case Product.ProductType.None:
+                    break;
+                case Product.ProductType.Samsung32:
+                    product.Price = 149.99;
+                    break;
+                case Product.ProductType.Samsung48:
+                    product.Price = 299.99;
+                    break;
+                case Product.ProductType.Samsung60:
+                    product.Price = 399.99;
+                    break;
+                default:
+                    break;
+            }
+            ConsoleUtil.DisplayMessage("Total Value: $" + product.Price * product.NumberOfUnits);
             ConsoleUtil.DisplayMessage("");
 
             DisplayContinuePrompt();
