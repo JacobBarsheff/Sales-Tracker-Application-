@@ -93,12 +93,7 @@ namespace Demo_TheTravelingSalesperson
             MenuOption userMenuChoice;
 
             _consoleView.DisplayWelcomeScreen();
-
-            
-
-
-            
-            
+              
             //
             // application loop
             //
@@ -267,18 +262,35 @@ namespace Demo_TheTravelingSalesperson
         }
         private void EditAccount()
         {
-            Salesperson salesperson = _consoleView.DisplayEditAccount(_salesperson);
+            _salesperson = _consoleView.DisplayEditAccount(_salesperson);
         }
-        private static void WriteXMLFile(Salesperson salesperson, XmlServices _xml)
+        private void WriteXMLFile(Salesperson salesperson, XmlServices _xml)
         {
-            salesperson = XmlServices.WriteXMLFile(salesperson);
-            
+            bool yesToWrite = _consoleView.DisplayConfirmSave();
+            if (yesToWrite)
+            {
+            _salesperson = XmlServices.WriteXMLFile(salesperson);
+            }
+            else
+            {
+                _consoleView.DisplayConfirmNo();
+            }
+               
         }
 
-        public static Salesperson ReadXmlFile(Salesperson salesperson)
+        private Salesperson ReadXmlFile(Salesperson salesperson)
         {
-            salesperson = XmlServices.ReadXmlFile(salesperson);
-            return salesperson;
+            bool yesToLoad = _consoleView.DisplayConfirmSave();
+            if (yesToLoad)
+            {
+                salesperson = XmlServices.ReadXmlFile(salesperson);
+                return salesperson;
+            }
+            else
+            {
+                _consoleView.DisplayConfirmNo();
+                return salesperson;
+            }
         }
         #endregion
     }

@@ -140,16 +140,16 @@ namespace Demo_TheTravelingSalesperson
             salesperson.AccountID = Console.ReadLine();
             ConsoleUtil.DisplayMessage("");
 
-            ConsoleUtil.DisplayPromptMessage("Please Enter your Current City ");
+            ConsoleUtil.DisplayPromptMessage("Please Enter your Current City: ");
             salesperson.CurrentCity = Console.ReadLine();
             ConsoleUtil.DisplayMessage("");
 
-            ConsoleUtil.DisplayPromptMessage("Do you have any prior sales experience");
+            ConsoleUtil.DisplayPromptMessage("Do you have any prior sales experience, please type TRUE for yes: ");
             bool.TryParse(Console.ReadLine(), out bool experience);
             salesperson.HasPriorSalesExperience = experience;
             ConsoleUtil.DisplayMessage("");
 
-            ConsoleUtil.DisplayMessage("Available Product Type For Sale:");
+            ConsoleUtil.DisplayMessage("Available Product Type For Sale: ");
             ConsoleUtil.DisplayMessage("");
 
             //
@@ -822,8 +822,47 @@ namespace Demo_TheTravelingSalesperson
             return salesperson;
 
         }
-
-        
+        public bool DisplayConfirmSave()
+        {   
+            ConsoleUtil.DisplayReset();
+            ConsoleUtil.DisplayPromptMessage("Are you sure you would like to save?" +
+                " Press ENTER to Confirm, or any other key to go back.");
+            bool yesToSave = false;
+            ConsoleKeyInfo keyinfo = Console.ReadKey();
+            if (keyinfo.Key == ConsoleKey.Enter)
+            {
+                yesToSave = true;
+            }
+            else
+            {
+                yesToSave = false;
+            }
+            return yesToSave;
+        }
+        public bool DisplayConfirmLoad()
+        {
+            ConsoleUtil.DisplayReset();
+            ConsoleUtil.DisplayPromptMessage("Are you sure you would like to Load?" +
+                " Press ENTER to Confirm, or any other key to go back.");
+            bool yesToSave = false;
+            ConsoleKeyInfo keyinfo = Console.ReadKey();
+            if (keyinfo.Key == ConsoleKey.Enter)
+            {
+                yesToSave = true;
+            }
+            else
+            {
+                yesToSave = false;
+            }
+            return yesToSave;
+        }
+        public void DisplayConfirmNo()
+        {
+            ConsoleUtil.DisplayReset();
+            ConsoleUtil.DisplayMessage("Process not executed");
+            ConsoleUtil.DisplayMessage("Press any key to continue");
+            Console.ReadKey();
+        }
         #endregion
     }
 
