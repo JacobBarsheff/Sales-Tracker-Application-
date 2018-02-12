@@ -264,10 +264,10 @@ namespace Demo_TheTravelingSalesperson
                 Console.Write("\t" + "--------------------" + Environment.NewLine +
                     "\t" + "H. Display Sales Log" + Environment.NewLine +
                     "\t" + "I. Display Purchase Log" + Environment.NewLine +
-                    "\t" + "J. Change Product" + Environment.NewLine +
-                    "\t" + "K. Edit Account" + Environment.NewLine);
+                    "\t" + "J. Change Product" + Environment.NewLine);
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\t" + "--------------------" + Environment.NewLine +
+                    "\t" + "K. Edit Account" + Environment.NewLine +
                     "\t" + "L. Save Account" + Environment.NewLine +
                     "\t" + "M. Load Account" + Environment.NewLine);
                 Console.ForegroundColor = ConsoleColor.Red;
